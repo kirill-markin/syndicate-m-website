@@ -1,0 +1,126 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# SYNDICATE_M Website - Project Architecture Guide
+
+## Project Overview
+
+Modern family website built with Next.js 15.3.2 using App Router, designed for static generation with YAML-based data management.
+
+## Core Architecture
+
+### Technology Stack
+- **Framework**: Next.js 15.3.2 with App Router
+- **Language**: TypeScript with strict typing
+- **Styling**: TailwindCSS 4
+- **Data Management**: YAML files with custom loader
+- **Deployment**: Optimized for static generation
+
+### Project Structure
+
+```
+syndicate-m-website/
+├── src/
+│   ├── app/                 # Next.js App Router pages
+│   │   ├── page.tsx         # Homepage
+│   │   ├── layout.tsx       # Root layout
+│   │   └── globals.css      # Global styles
+│   ├── data/                # YAML data files
+│   │   ├── team-members.yaml
+│   │   ├── testimonials.yaml
+│   │   └── site-config.yaml
+│   ├── lib/                 # Utility libraries
+│   │   └── data-loader.ts   # YAML data loader with types
+│   └── hooks/               # React hooks
+├── public/                  # Static assets
+└── package.json
+```
+
+## Data Management System
+
+### YAML Data Structure
+
+The project uses YAML files for content management located in [src/data/](mdc:src/data):
+
+- **[team-members.yaml](mdc:src/data/team-members.yaml)**: Team member profiles with bios and social links
+- **[testimonials.yaml](mdc:src/data/testimonials.yaml)**: Client testimonials with ratings and descriptions  
+- **[site-config.yaml](mdc:src/data/site-config.yaml)**: Global site configuration and content
+
+### Data Loader Library
+
+**[data-loader.ts](mdc:src/lib/data-loader.ts)** provides:
+- Type-safe YAML loading functions
+- Exported TypeScript interfaces for all data structures
+- Helper functions for filtering and searching
+- Static generation optimized data access
+
+### Key Functions:
+```typescript
+getTeamMembers(): TeamMembersData
+getTestimonials(): TestimonialsData  
+getSiteConfig(): SiteConfig
+getFeaturedTestimonials(): Testimonial[]
+searchTestimonials(query: string): Testimonial[]
+```
+
+## Development Patterns
+
+### Static Generation First
+- All data loaded at build time via YAML files
+- Use `getTeamMembers()`, `getTestimonials()`, `getSiteConfig()` in server components
+- Pre-render all possible content for optimal performance
+
+### Type Safety
+- All data structures have TypeScript interfaces
+- Import types from `src/lib/data-loader.ts`
+- Never use `any` types - use proper interfaces
+
+### Content Updates
+- Edit YAML files in `src/data/` to update content
+- No database required - all content is file-based
+- Changes require rebuild for static sites
+
+## Working with Data
+
+### Loading Team Members
+```typescript
+import { getTeamMembers, type TeamMember } from '@/lib/data-loader';
+
+const teamData = getTeamMembers();
+const members: TeamMember[] = teamData.members;
+```
+
+### Loading Testimonials
+```typescript
+import { getTestimonials, getFeaturedTestimonials } from '@/lib/data-loader';
+
+const allTestimonials = getTestimonials();
+const featured = getFeaturedTestimonials();
+```
+
+### Site Configuration
+```typescript
+import { getSiteConfig } from '@/lib/data-loader';
+
+const config = getSiteConfig();
+const navigation = config.site.navigation;
+```
+
+## Best Practices
+
+1. **Always use the data loader functions** - never read YAML files directly
+2. **Import proper TypeScript types** from data-loader.ts
+3. **Server Components by default** - use client components only when needed
+4. **Static generation optimized** - all data loaded at build time
+5. **Type-safe development** - leverage the provided interfaces
+6. **YAML-first content** - update content via YAML files, not hardcoded values
+
+## Adding New Data
+
+1. Update YAML files in `src/data/`
+2. Add new TypeScript interfaces to `data-loader.ts` if needed
+3. Create new loader functions following existing patterns
+4. Export new types and functions from data-loader.ts
+5. Use in components with proper typing
