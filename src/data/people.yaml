@@ -1,4 +1,4 @@
-testimonials:
+people:
   - id: "tijana-ostojic"
     name: "Tijana Ostojic"
     title: "Operations Manager"
@@ -43,7 +43,7 @@ testimonials:
 
 # Page configuration
 page_config:
-  title: "The testimonials WE ADORE"
-  subtitle: "Here are all the testimonials from clients we've ever worked with. They're all just divine."
+  title: "The people WE ADORE"
+  subtitle: "Here are all the people from clients we've ever worked with. They're all just divine."
   search_enabled: true
   search_placeholder: "search by title" 

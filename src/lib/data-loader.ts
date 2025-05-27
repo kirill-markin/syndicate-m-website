@@ -14,7 +14,7 @@ export interface TeamMember {
   photo: string;
 }
 
-export interface Testimonial {
+export interface Person {
   id: string;
   name: string;
   title: string;
@@ -42,7 +42,7 @@ export interface SiteConfig {
         subtitle: string;
         description: string;
       };
-      testimonials_section: {
+      people_section: {
         title: string;
         subtitle: string;
         cta_text: string;
@@ -56,8 +56,8 @@ export interface SiteConfig {
   };
 }
 
-export interface TestimonialsData {
-  testimonials: Testimonial[];
+export interface PeopleData {
+  people: Person[];
   page_config: {
     title: string;
     subtitle: string;
@@ -86,8 +86,8 @@ export const getTeamMembers = (): TeamMembersData => {
   return loadYamlFile<TeamMembersData>('team-members.yaml');
 };
 
-export const getTestimonials = (): TestimonialsData => {
-  return loadYamlFile<TestimonialsData>('testimonials.yaml');
+export const getPeople = (): PeopleData => {
+  return loadYamlFile<PeopleData>('people.yaml');
 };
 
 export const getSiteConfig = (): SiteConfig => {
@@ -95,19 +95,19 @@ export const getSiteConfig = (): SiteConfig => {
 };
 
 // Helper functions for filtering and searching
-export const getFeaturedTestimonials = (): Testimonial[] => {
-  const data = getTestimonials();
-  return data.testimonials.filter(testimonial => testimonial.featured);
+export const getFeaturedPeople = (): Person[] => {
+  const data = getPeople();
+  return data.people.filter(person => person.featured);
 };
 
-export const searchTestimonials = (query: string): Testimonial[] => {
-  const data = getTestimonials();
+export const searchPeople = (query: string): Person[] => {
+  const data = getPeople();
   const searchTerm = query.toLowerCase();
   
-  return data.testimonials.filter(testimonial => 
-    testimonial.name.toLowerCase().includes(searchTerm) ||
-    testimonial.title.toLowerCase().includes(searchTerm) ||
-    testimonial.description.toLowerCase().includes(searchTerm)
+  return data.people.filter(person => 
+    person.name.toLowerCase().includes(searchTerm) ||
+    person.title.toLowerCase().includes(searchTerm) ||
+    person.description.toLowerCase().includes(searchTerm)
   );
 };
 

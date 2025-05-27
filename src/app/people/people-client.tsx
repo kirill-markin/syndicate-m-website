@@ -1,29 +1,29 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { TestimonialsData } from '@/lib/data-loader';
+import { PeopleData } from '@/lib/data-loader';
 import Header from '../components/Header';
 
-interface TestimonialsClientProps {
-  testimonialsData: TestimonialsData;
+interface PeopleClientProps {
+  peopleData: PeopleData;
 }
 
-const TestimonialsClient = ({ testimonialsData }: TestimonialsClientProps) => {
+const PeopleClient = ({ peopleData }: PeopleClientProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   
-  // Filter testimonials based on search query
-  const filteredTestimonials = useMemo(() => {
+  // Filter people based on search query
+  const filteredPeople = useMemo(() => {
     if (!searchQuery.trim()) {
-      return testimonialsData.testimonials;
+      return peopleData.people;
     }
     
     const query = searchQuery.toLowerCase();
-    return testimonialsData.testimonials.filter(testimonial =>
-      testimonial.name.toLowerCase().includes(query) ||
-      testimonial.title.toLowerCase().includes(query) ||
-      testimonial.description.toLowerCase().includes(query)
+    return peopleData.people.filter(person =>
+      person.name.toLowerCase().includes(query) ||
+      person.title.toLowerCase().includes(query) ||
+      person.description.toLowerCase().includes(query)
     );
-  }, [searchQuery, testimonialsData.testimonials]);
+  }, [searchQuery, peopleData.people]);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -35,17 +35,17 @@ const TestimonialsClient = ({ testimonialsData }: TestimonialsClientProps) => {
         {/* Hero section */}
         <div className="text-center py-16 px-6">
           <h1 className="text-5xl md:text-6xl font-normal mb-4 italic text-gray-600">
-            The testimonials
+            The people
           </h1>
           <h2 className="text-6xl md:text-7xl font-bold mb-8 tracking-tight">
             WE ADORE
           </h2>
           <p className="text-gray-600 text-lg max-w-md mx-auto mb-12">
-            {testimonialsData.page_config.subtitle}
+            {peopleData.page_config.subtitle}
           </p>
           
           {/* Search bar */}
-          {testimonialsData.page_config.search_enabled && (
+          {peopleData.page_config.search_enabled && (
             <div className="max-w-md mx-auto relative">
               <div className="relative">
                 <svg 
@@ -58,7 +58,7 @@ const TestimonialsClient = ({ testimonialsData }: TestimonialsClientProps) => {
                 </svg>
                 <input
                   type="text"
-                  placeholder={testimonialsData.page_config.search_placeholder}
+                  placeholder={peopleData.page_config.search_placeholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full py-4 pl-12 pr-6 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-600"
@@ -72,20 +72,20 @@ const TestimonialsClient = ({ testimonialsData }: TestimonialsClientProps) => {
         <div className="absolute top-1/2 right-12 w-3 h-3 bg-orange-500 rounded-full"></div>
       </div>
 
-      {/* Testimonials grid */}
+      {/* People grid */}
       <div className="px-6 pb-12">
         <div className="max-w-4xl mx-auto space-y-12">
-          {filteredTestimonials.map((testimonial) => (
-            <div key={testimonial.id} className="relative">
+          {filteredPeople.map((person) => (
+            <div key={person.id} className="relative">
               <div className="text-left">
                 <h3 className="text-4xl md:text-5xl font-normal mb-2 text-black">
-                  {testimonial.name}
+                  {person.name}
                 </h3>
                 <p className="text-gray-600 text-lg mb-4 max-w-lg">
-                  {testimonial.title}, {testimonial.description}
+                  {person.title}, {person.description}
                 </p>
                 <div className="inline-block px-4 py-2 border border-gray-300 rounded-full text-sm text-gray-600">
-                  ~${testimonial.hourly_rate}+ per hour
+                  ~${person.hourly_rate}+ per hour
                 </div>
               </div>
             </div>
@@ -96,4 +96,4 @@ const TestimonialsClient = ({ testimonialsData }: TestimonialsClientProps) => {
   );
 };
 
-export default TestimonialsClient; 
+export default PeopleClient; 

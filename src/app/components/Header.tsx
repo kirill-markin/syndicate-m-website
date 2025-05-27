@@ -6,8 +6,8 @@ const Header = () => {
       <Link href="/" className="text-lg font-medium text-black">
         syndicate_m
       </Link>
-      <Link href="/testimonials" className="text-lg hover:underline text-black">
-        Testimonials
+      <Link href="/people" className="text-lg hover:underline text-black">
+        People
       </Link>
     </header>
   );
