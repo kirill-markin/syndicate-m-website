@@ -41,4 +41,8 @@ yarn-error.log*
 next-env.d.ts
 
 # temporary files
-/tmp
+/tmp/*
+
+# add design reference  
+!tmp/design-page-home.png
+!tmp/design-page-recomendations.png
