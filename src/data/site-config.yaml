@@ -7,8 +7,8 @@ site:
   navigation:
     - label: "Home"
       href: "/"
-    - label: "People"
-      href: "/people"
+    - label: "Testimonials"
+      href: "/testimonials"
       
   # Footer content
   footer:
@@ -22,11 +22,11 @@ site:
       subtitle: "This is our family site."
       description: "We have no idea what it's for."
     
-    recommendations_section:
-      title: "recommendations"
-      subtitle: "there will be people here with whom we have ever worked and who advise you to work with them too"
-      cta_text: "All cool people"
-      cta_link: "/people"
+    testimonials_section:
+      title: "testimonials"
+      subtitle: "there will be testimonials here from clients we have ever worked with who advise you to work with them too"
+      cta_text: "All cool testimonials"
+      cta_link: "/testimonials"
       
   # Social media platforms configuration
   social_platforms:

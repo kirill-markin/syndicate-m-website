@@ -42,7 +42,7 @@ export interface SiteConfig {
         subtitle: string;
         description: string;
       };
-      recommendations_section: {
+      testimonials_section: {
         title: string;
         subtitle: string;
         cta_text: string;

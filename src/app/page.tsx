@@ -11,8 +11,8 @@ export default function Home() {
       {/* Header */}
       <header className="flex justify-between items-center p-6">
         <div className="text-lg font-medium">syndicate_m</div>
-        <Link href="/people" className="text-lg hover:underline">
-          The people
+                  <Link href="/testimonials" className="text-lg hover:underline">
+            Testimonials
         </Link>
       </header>
 
@@ -51,21 +51,21 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Recommendations Section */}
+        {/* Testimonials Section */}
         <section className="bg-gray-900 text-white rounded-lg p-8 mb-12 max-w-6xl mx-auto">
           <div className="max-w-3xl">
             <p className="text-sm mb-6 text-gray-300">
-              {siteConfig.site.homepage.recommendations_section.subtitle}
+              {siteConfig.site.homepage.testimonials_section.subtitle}
             </p>
             <div className="flex justify-between items-end">
               <h2 className="text-4xl font-bold">
-                {siteConfig.site.homepage.recommendations_section.title}
+                {siteConfig.site.homepage.testimonials_section.title}
               </h2>
               <Link 
-                href={siteConfig.site.homepage.recommendations_section.cta_link}
+                href={siteConfig.site.homepage.testimonials_section.cta_link}
                 className="bg-white text-black px-6 py-2 rounded-full text-sm hover:bg-gray-100 transition-colors font-medium"
               >
-                {siteConfig.site.homepage.recommendations_section.cta_text}
+                {siteConfig.site.homepage.testimonials_section.cta_text}
               </Link>
             </div>
           </div>
