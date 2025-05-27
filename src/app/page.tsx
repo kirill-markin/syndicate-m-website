@@ -17,20 +17,20 @@ export default function Home() {
       </header>
 
       {/* Polaroid Photos */}
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-12">
         <Image
           src="/polaroid-strip.png"
           alt="Team polaroid photos"
-          width={600}
-          height={200}
+          width={1000}
+          height={400}
           className="object-contain"
         />
       </div>
 
-      {/* Hero Section */}
+              {/* Hero Section */}
       <main className="px-6">
-        <div className="text-center mb-20">
-          <h1 className="text-6xl md:text-7xl font-bold mb-4 tracking-tight">
+        <div className="text-center mb-16">
+          <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-4 tracking-tight">
             {siteConfig.site.homepage.hero.title}
           </h1>
           <p className="text-lg mb-2">{siteConfig.site.homepage.hero.subtitle}</p>
@@ -38,7 +38,7 @@ export default function Home() {
         </div>
 
         {/* Team Members Sections */}
-        <div className="max-w-4xl mx-auto space-y-20 mb-24">
+        <div className="max-w-4xl mx-auto space-y-16 mb-20">
           {teamData.members.map((member) => (
             <section key={member.id} className="text-center">
               <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider">
