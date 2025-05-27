@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getSiteConfig, getTeamMembers } from "@/lib/data-loader";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { Route } from "next";
 
 export default function Home() {
   const siteConfig = getSiteConfig();
@@ -59,7 +60,7 @@ export default function Home() {
                 {siteConfig.site.homepage.people_section.title}
               </h2>
               <Link 
-                href={siteConfig.site.homepage.people_section.cta_link}
+                href={siteConfig.site.homepage.people_section.cta_link as Route}
                 className="bg-white text-black px-6 py-2 rounded-full text-sm hover:bg-gray-100 transition-colors font-medium"
               >
                 {siteConfig.site.homepage.people_section.cta_text}
