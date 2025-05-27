@@ -1,14 +1,17 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { PeopleData } from '@/lib/data-loader';
+import { PeopleData, SiteConfig, TeamMembersData } from '@/lib/data-loader';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 interface PeopleClientProps {
   peopleData: PeopleData;
+  siteConfig: SiteConfig;
+  teamData: TeamMembersData;
 }
 
-const PeopleClient = ({ peopleData }: PeopleClientProps) => {
+const PeopleClient = ({ peopleData, siteConfig, teamData }: PeopleClientProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   
   // Filter people based on search query
@@ -92,6 +95,9 @@ const PeopleClient = ({ peopleData }: PeopleClientProps) => {
           ))}
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer teamData={teamData} siteConfig={siteConfig} />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getSiteConfig, getTeamMembers } from "@/lib/data-loader";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const siteConfig = getSiteConfig();
@@ -68,38 +69,8 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer with Social Links */}
-      <footer className="px-6 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm max-w-6xl mx-auto">
-          {teamData.members.map((member) => (
-            <div key={member.id}>
-              <div className="font-bold uppercase mb-3 tracking-wider">{member.name}</div>
-              <div className="space-y-1">
-                {member.social_links.map((link, index) => (
-                  <div key={index}>
-                    <a 
-                      href={link.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:underline capitalize text-gray-700"
-                    >
-                      {link.platform}
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Footer */}
-        <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200 text-sm max-w-6xl mx-auto">
-          <div className="text-gray-600">{siteConfig.site.footer.copyright}</div>
-          <div className="font-bold text-lg italic">
-            {siteConfig.site.footer.update_text}
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer teamData={teamData} siteConfig={siteConfig} />
     </div>
   );
 }
