@@ -1,8 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getSiteConfig, getTeamMembers } from "@/lib/data-loader";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import { Route } from "next";
 
 export default function Home() {
@@ -10,10 +8,7 @@ export default function Home() {
   const teamData = getTeamMembers();
 
   return (
-    <div className="min-h-screen bg-gray-50 text-black">
-      {/* Header */}
-      <Header />
-
+    <div className="min-h-screen">
       {/* Polaroid Photos */}
       <div className="flex justify-center mb-12">
         <Image
@@ -25,14 +20,18 @@ export default function Home() {
         />
       </div>
 
-              {/* Hero Section */}
+      {/* Hero Section */}
       <main className="px-6">
         <div className="text-center mb-16">
           <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-4 tracking-tight">
             {siteConfig.site.homepage.hero.title}
           </h1>
-          <p className="text-lg mb-2">{siteConfig.site.homepage.hero.subtitle}</p>
-          <p className="text-gray-600">{siteConfig.site.homepage.hero.description}</p>
+          <p className="text-lg mb-2">
+            {siteConfig.site.homepage.hero.subtitle}
+          </p>
+          <p className="text-gray-600">
+            {siteConfig.site.homepage.hero.description}
+          </p>
         </div>
 
         {/* Team Members Sections */}
@@ -59,7 +58,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold">
                 {siteConfig.site.homepage.people_section.title}
               </h2>
-              <Link 
+              <Link
                 href={siteConfig.site.homepage.people_section.cta_link as Route}
                 className="bg-white text-black px-6 py-2 rounded-full text-sm hover:bg-gray-100 transition-colors font-medium"
               >
@@ -69,9 +68,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <Footer teamData={teamData} siteConfig={siteConfig} />
     </div>
   );
 }

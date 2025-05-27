@@ -1,0 +1,117 @@
+---
+description: 
+globs: *.tsx,**.tsx,*.ts
+alwaysApply: false
+---
+# Next.js 15.3 Rules
+
+## React Rules
+
+1. React Compiler
+	- Use React Compiler for optimized performance
+	- Leverage automatic memoization provided by the compiler
+	- Avoid manual memoization (useMemo, useCallback) when possible
+
+2. Component Props
+	- Use readonly for passing props
+	- Define prop types explicitly using TypeScript interfaces
+	- Destructure props at the component level for clarity
+
+3. Function Organization
+	- Keep function logic outside of components
+	- Call external functions from components instead of defining within them
+	- Use custom hooks for reusable logic
+
+4. State Management
+	- Prefer React's built-in state management (useState, useReducer)
+	- Use Context API for global state that doesn't change frequently
+	- Consider server components where possible to reduce client-side state
+
+## Server Components
+
+1. Default to Server Components Aritecture
+	- Every component is a Server Component by default
+	- Only add `'use client'` when necessary for client-side interactivity
+	- Keep as much logic as possible in Server Components for better performance
+
+2. Component Organization
+	- Place shared components in `components/` directory
+	- Use `components/ui/` for reusable UI components and Shadcn
+
+3. Data Fetching
+	- Fetch data directly in Server Components using `fetch()` with no external libraries
+	- Take advantage of automatic request deduplication
+	- Use `revalidatePath()` or `revalidateTag()` for data revalidation
+	- you can use reacts `use` hook for reqesting data on server and pass request to client, read more – https://nextjs.org/docs/app/getting-started/fetching-data
+	- Cache data with `cache()` function when appropriate
+	- Use `next/cache` for fine-grained cache control
+	- Make sure to write optimal data requests: if we get data from DB, try to use promeses and not block, and run in parallel
+
+4. Server/Client Boundary
+	- Keep "use client" components as thin as possible
+	- Pass data down from Server Components to Client Components
+	- Avoid passing unnecessary data across the boundary
+
+## Server Actions
+
+1. Form Handling
+	- Use Server Actions with `action` prop on forms
+	- Define Server Actions using the `'use server'` directive
+	- Always validate data server-side using a schema validation library zod
+
+2. Action Organization
+	- Group related actions in separate files with `'use server'` at the top
+	- Remember that `'use server'` basicly makes functions to be like an api, so we need to treat it propertly: data validation, auth if needed, Authentication if needed
+	- Place actions in `app/actions/` directory or co-locate with related components
+
+3. Error Handling
+	- Use try/catch blocks in Server Actions
+	- Return structured responses with `{ success, data, error }` pattern
+	- Use `redirect()` for redirects after successful actions
+
+4. Optimistic Updates
+	- Implement optimistic updates with `useOptimistic` hook
+	- Provide realistic client-side UI updates before server response
+
+## Route Handlers
+
+1. API Routes
+- Server actions by defult: try not to use api routs;
+- Define API routes in `app/api/` directory;
+- Use Route Handlers only when necessary (direct database access usually preferred)
+- Return properly formatted Response objects
+
+## Data Mutation
+
+1. Prefer Server Actions over API Routes for data mutations
+2. Use transactions when multiple database operations are required
+3. Implement proper error handling and validation
+## Component Structure
+
+1. Keep component files focused on a single responsibility
+2. Export named components instead of default exports
+3. Group related components in directories with appropriate organization
+## TypeScript
+
+1. Use TypeScript for all components and actions
+2. Define types for form data and action responses
+3. Use Zod for runtime validation alongside TypeScript
+## Performance
+
+1. Utilize partial prerendering
+2. Use dynamic imports for code splitting when appropriate
+3. Implement proper caching strategies with cache tags and revalidation
+4. Minimize client-side JavaScript by keeping components as Server Components when possible
+## SEO and Metadata
+
+1. Use Metadata API in layout.tsx or page.tsx files
+2. Implement dynamic metadata using generateMetadata function
+3. Set proper Open Graph and Twitter card metadata
+
+## Good patterns
+
+1. After each click user should have Immediate UI update: use toast from sonner / loading.tsx / suspance / optimistic update or other related patterns to app feel good
+
+## Additional
+
+1. in nextjs 15+ we need to await cookies

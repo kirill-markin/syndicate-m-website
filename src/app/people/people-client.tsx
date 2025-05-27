@@ -1,30 +1,31 @@
-'use client';
+"use client";
 
-import { useState, useMemo } from 'react';
-import { PeopleData, SiteConfig, TeamMembersData } from '@/lib/data-loader';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { useState, useMemo } from "react";
+import { PeopleData } from "@/lib/data-loader";
+// import Header from "../components/Header";
+// import Footer from "../components/Footer";
 
 interface PeopleClientProps {
   peopleData: PeopleData;
-  siteConfig: SiteConfig;
-  teamData: TeamMembersData;
+  // siteConfig: SiteConfig;
+  // teamData: TeamMembersData;
 }
 
-const PeopleClient = ({ peopleData, siteConfig, teamData }: PeopleClientProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  
+const PeopleClient = ({ peopleData }: PeopleClientProps) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   // Filter people based on search query
   const filteredPeople = useMemo(() => {
     if (!searchQuery.trim()) {
       return peopleData.people;
     }
-    
+
     const query = searchQuery.toLowerCase();
-    return peopleData.people.filter(person =>
-      person.name.toLowerCase().includes(query) ||
-      person.title.toLowerCase().includes(query) ||
-      person.description.toLowerCase().includes(query)
+    return peopleData.people.filter(
+      (person) =>
+        person.name.toLowerCase().includes(query) ||
+        person.title.toLowerCase().includes(query) ||
+        person.description.toLowerCase().includes(query)
     );
   }, [searchQuery, peopleData.people]);
 
@@ -33,7 +34,7 @@ const PeopleClient = ({ peopleData, siteConfig, teamData }: PeopleClientProps) =
       {/* Header section */}
       <div className="relative">
         {/* Top navigation */}
-        <Header />
+        {/* <Header /> */}
 
         {/* Hero section */}
         <div className="text-center py-16 px-6">
@@ -46,18 +47,23 @@ const PeopleClient = ({ peopleData, siteConfig, teamData }: PeopleClientProps) =
           <p className="text-gray-600 text-lg max-w-md mx-auto mb-12">
             {peopleData.page_config.subtitle}
           </p>
-          
+
           {/* Search bar */}
           {peopleData.page_config.search_enabled && (
             <div className="max-w-md mx-auto relative">
               <div className="relative">
-                <svg 
+                <svg
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-                  fill="none" 
-                  stroke="currentColor" 
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
                 </svg>
                 <input
                   type="text"
@@ -97,9 +103,9 @@ const PeopleClient = ({ peopleData, siteConfig, teamData }: PeopleClientProps) =
       </div>
 
       {/* Footer */}
-      <Footer teamData={teamData} siteConfig={siteConfig} />
+      {/* <Footer teamData={teamData} siteConfig={siteConfig} /> */}
     </div>
   );
 };
 
-export default PeopleClient; 
+export default PeopleClient;
