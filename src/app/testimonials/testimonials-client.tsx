@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { TestimonialsData } from '@/lib/data-loader';
+import Header from '../components/Header';
 
 interface TestimonialsClientProps {
   testimonialsData: TestimonialsData;
@@ -29,10 +30,7 @@ const TestimonialsClient = ({ testimonialsData }: TestimonialsClientProps) => {
       {/* Header section */}
       <div className="relative">
         {/* Top navigation */}
-        <div className="flex justify-between items-center p-6">
-          <div className="font-bold text-lg">SYNDICATE_M</div>
-          <div className="text-sm">testimonials</div>
-        </div>
+        <Header />
 
         {/* Hero section */}
         <div className="text-center py-16 px-6">
@@ -76,13 +74,11 @@ const TestimonialsClient = ({ testimonialsData }: TestimonialsClientProps) => {
 
       {/* Testimonials grid */}
       <div className="px-6 pb-12">
-        <div className="max-w-4xl mx-auto space-y-16">
-          {filteredTestimonials.map((testimonial, index) => (
+        <div className="max-w-4xl mx-auto space-y-12">
+          {filteredTestimonials.map((testimonial) => (
             <div key={testimonial.id} className="relative">
-              <div className={`${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
-                <h3 className={`text-4xl md:text-5xl font-normal mb-2 ${
-                  index === 0 ? 'text-black' : 'text-gray-400'
-                }`}>
+              <div className="text-left">
+                <h3 className="text-4xl md:text-5xl font-normal mb-2 text-black">
                   {testimonial.name}
                 </h3>
                 <p className="text-gray-600 text-lg mb-4 max-w-lg">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getSiteConfig, getTeamMembers } from "@/lib/data-loader";
+import Header from "./components/Header";
 
 export default function Home() {
   const siteConfig = getSiteConfig();
@@ -9,12 +10,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 text-black">
       {/* Header */}
-      <header className="flex justify-between items-center p-6">
-        <div className="text-lg font-medium">syndicate_m</div>
-                  <Link href="/testimonials" className="text-lg hover:underline">
-            Testimonials
-        </Link>
-      </header>
+      <Header />
 
       {/* Polaroid Photos */}
       <div className="flex justify-center mb-12">
