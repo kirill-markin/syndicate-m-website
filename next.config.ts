@@ -1,10 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    // Exclude tmp directory from compilation
-    typedRoutes: true,
-  },
+  // experimental: {
+  //   // typedRoutes is not supported with Turbopack
+  //   // typedRoutes: true,
+  // },
   // Exclude tmp directory from builds
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
   webpack: (config) => {
