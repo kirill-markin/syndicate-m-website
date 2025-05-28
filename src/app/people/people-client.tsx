@@ -30,7 +30,7 @@ const PeopleClient = ({ peopleData }: PeopleClientProps) => {
   }, [searchQuery, peopleData.people]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       {/* Header section */}
       <div className="relative">
         {/* Top navigation */}
