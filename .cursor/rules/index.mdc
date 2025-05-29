@@ -7,15 +7,16 @@ alwaysApply: true
 
 ## Project Overview
 
-Modern family website built with Next.js 15.3.2 using App Router, designed for static generation with YAML-based data management.
+Modern family website built with Next.js 15.3.2 using App Router, designed for static generation with TypeScript-based data management.
 
 ## Core Architecture
 
 ### Technology Stack
+
 - **Framework**: Next.js 15.3.2 with App Router
 - **Language**: TypeScript with strict typing
 - **Styling**: TailwindCSS 4
-- **Data Management**: YAML files with custom loader
+- **Data Management**: TypeScript files with exported typed data
 - **Deployment**: Optimized for static generation
 
 ### Project Structure
@@ -27,12 +28,11 @@ syndicate-m-website/
 │   │   ├── page.tsx         # Homepage
 │   │   ├── layout.tsx       # Root layout
 │   │   └── globals.css      # Global styles
-│   ├── data/                # YAML data files
-│   │   ├── team-members.yaml
-│   │   ├── testimonials.yaml
-│   │   └── site-config.yaml
+│   ├── data/                # TypeScript data files
+│   │   ├── team-members.ts
+│   │   ├── people.ts
+│   │   └── site-config.ts
 │   ├── lib/                 # Utility libraries
-│   │   └── data-loader.ts   # YAML data loader with types
 │   └── hooks/               # React hooks
 ├── public/                  # Static assets
 └── package.json
@@ -40,87 +40,107 @@ syndicate-m-website/
 
 ## Data Management System
 
-### YAML Data Structure
+### TypeScript Data Structure
 
-The project uses YAML files for content management located in [src/data/](mdc:src/data):
+The project uses TypeScript files for content management located in [src/data/](mdc:src/data):
 
-- **[team-members.yaml](mdc:src/data/team-members.yaml)**: Team member profiles with bios and social links
-- **[testimonials.yaml](mdc:src/data/testimonials.yaml)**: Client testimonials with ratings and descriptions  
-- **[site-config.yaml](mdc:src/data/site-config.yaml)**: Global site configuration and content
+- **[ts.ts](members.ts)**: Team member profiles with bios and social ts](mdc:src/data/people.ts)**: Client/people data with profi*[site-config.ts](mdc:src/data/site-config.ts)**: Global site configurnt
 
-### Data Loader Library
+### Type-Safe Data Export
 
-**[data-loader.ts](mdc:src/lib/data-loader.ts)** provides:
-- Type-safe YAML loading functions
-- Exported TypeScript interfaces for all data structures
-- Helper functions for filtering and searching
-- Static generation optimized data access
+Each data file exports:
 
-### Key Functions:
+- **TypeScript interfaces** for all data structures
+- **Typed data objects** with full type safety
+- **Helper functions** for filtering and searching
+- **Compile-time validation** ensuring data integrity
+
+### Key Exports:
+
 ```typescript
-getTeamMembers(): TeamMembersData
-getTestimonials(): TestimonialsData  
-getSiteConfig(): SiteConfig
-getFeaturedTestimonials(): Testimonial[]
-searchTestimonials(query: string): Testimonial[]
+// From team-members.ts
+export interface TeamMember
+export interface TeamMembersData
+export const teamMembers: TeamMembersData
+export const getTeamMemberById(id: string): TeamMember | undefined
+
+// From people.ts
+export interface Person
+export interface PeopleData
+export const peopleData: PeopleData
+export const getFeaturedPeople(): Person[]
+export const searchPeople(query: string): Person[]
+
+// From site-config.ts
+export interface SiteConfig
+export const siteConfig: SiteConfig
 ```
 
 ## Development Patterns
 
 ### Static Generation First
-- All data loaded at build time via YAML files
-- Use `getTeamMembers()`, `getTestimonials()`, `getSiteConfig()` in server components
+
+- All data loaded at build time via TypeScript imports
+- Direct imports: `import { teamMembers } from '@/data/team-members'`
 - Pre-render all possible content for optimal performance
+- No runtime data parsing required
 
 ### Type Safety
-- All data structures have TypeScript interfaces
-- Import types from `src/lib/data-loader.ts`
+
+- All data structures have TypeScript interfaces defined in data files
+- Import types directly from data files, e.g.: `import { TeamMember } from '@/data/team-members'`
+- Compile-time type checking for all data access
 - Never use `any` types - use proper interfaces
 
 ### Content Updates
-- Edit YAML files in `src/data/` to update content
+
+- Edit TypeScript files in `src/data/` to update content
 - No database required - all content is file-based
-- Changes require rebuild for static sites
+- Full IDE support with autocomplete and type checking
+- Changes validated at compile time
 
 ## Working with Data
 
 ### Loading Team Members
-```typescript
-import { getTeamMembers, type TeamMember } from '@/lib/data-loader';
 
-const teamData = getTeamMembers();
-const members: TeamMember[] = teamData.members;
+```typescript
+import { teamMembers, type TeamMember } from "@/data/team-members";
+
+const members: TeamMember[] = teamMembers.members;
 ```
 
-### Loading Testimonials
-```typescript
-import { getTestimonials, getFeaturedTestimonials } from '@/lib/data-loader';
+### Loading People Data
 
-const allTestimonials = getTestimonials();
-const featured = getFeaturedTestimonials();
+```typescript
+import { peopleData, getFeaturedPeople } from "@/data/people";
+
+const allPeople = peopleData.people;
+const featured = getFeaturedPeople();
 ```
 
 ### Site Configuration
-```typescript
-import { getSiteConfig } from '@/lib/data-loader';
 
-const config = getSiteConfig();
-const navigation = config.site.navigation;
+```typescript
+import { siteConfig } from "@/data/site-config";
+
+const navigation = siteConfig.site.navigation;
 ```
 
 ## Best Practices
 
-1. **Always use the data loader functions** - never read YAML files directly
-2. **Import proper TypeScript types** from data-loader.ts
+1. **Direct TypeScript imports** - import data and types directly from data files
+2. **Type-first development** - define interfaces before data structures
 3. **Server Components by default** - use client components only when needed
 4. **Static generation optimized** - all data loaded at build time
-5. **Type-safe development** - leverage the provided interfaces
-6. **YAML-first content** - update content via YAML files, not hardcoded values
+5. **Type-safe development** - leverage TypeScript's compile-time checking
+6. **Structured data files** - keep related data and types together
 
 ## Adding New Data
 
-1. Update YAML files in `src/data/`
-2. Add new TypeScript interfaces to `data-loader.ts` if needed
-3. Create new loader functions following existing patterns
-4. Export new types and functions from data-loader.ts
-5. Use in components with proper typing
+1. Create new TypeScript file in `src/data/` or update existing files
+2. Define TypeScript interfaces for new data structures
+3. Export typed data objects following existing patterns
+4. Add helper functions if needed for data manipulation
+5. Import directly in components with full type safety
+6. Leverage IDE autocomplete and type checking
+

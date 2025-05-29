@@ -6,12 +6,12 @@ const nextConfig: NextConfig = {
   //   // typedRoutes: true,
   // },
   // Exclude tmp directory from builds
-  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  pageExtensions: ["tsx", "ts", "jsx", "js"],
   webpack: (config) => {
     // Ignore tmp directory during webpack compilation
     config.watchOptions = {
       ...config.watchOptions,
-      ignored: ['**/tmp/**', '**/node_modules/**', '**/.git/**'],
+      ignored: ["**/tmp/**", "**/node_modules/**", "**/.git/**"],
     };
     return config;
   },
@@ -20,11 +20,11 @@ const nextConfig: NextConfig = {
   // Add custom ignore patterns
   eslint: {
     ignoreDuringBuilds: false,
-    dirs: ['src'],
+    dirs: ["src"],
   },
   typescript: {
     ignoreBuildErrors: false,
-    tsconfigPath: './tsconfig.json',
+    tsconfigPath: "./tsconfig.json",
   },
 };
 
