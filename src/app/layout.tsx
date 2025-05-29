@@ -3,7 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { getTeamMembers, getSiteConfig } from "@/lib/data-loader";
+import { teamMembers } from "@/data/team-members";
+import { siteConfig } from "@/data/site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
-        <Footer teamData={getTeamMembers()} siteConfig={getSiteConfig()} />
+        <Footer teamData={teamMembers} siteConfig={siteConfig} />
       </body>
     </html>
   );

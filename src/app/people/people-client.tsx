@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { PeopleData } from "@/lib/data-loader";
+import { PeopleData } from "@/data/people";
 // import Header from "../components/Header";
 // import Footer from "../components/Footer";
 

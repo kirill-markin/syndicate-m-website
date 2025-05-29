@@ -1,12 +1,10 @@
+import { Route } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { getSiteConfig, getTeamMembers } from "@/lib/data-loader";
-import { Route } from "next";
+import { siteConfig } from "@/data/site-config";
+import { teamMembers } from "@/data/team-members";
 
 export default function Home() {
-  const siteConfig = getSiteConfig();
-  const teamData = getTeamMembers();
-
   return (
     <div className="min-h-screen">
       {/* Polaroid Photos */}
@@ -26,17 +24,19 @@ export default function Home() {
           <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold mb-4 tracking-tight">
             {siteConfig.site.homepage.hero.title}
           </h1>
-          <p className="text-lg mb-2">
-            {siteConfig.site.homepage.hero.subtitle}
-          </p>
-          <p className="text-gray-600">
-            {siteConfig.site.homepage.hero.description}
-          </p>
+          <div>
+            <p className="text-lg mb-2">
+              {siteConfig.site.homepage.hero.subtitle}
+            </p>
+            <p className="text-gray-600">
+              {siteConfig.site.homepage.hero.description}
+            </p>
+          </div>
         </div>
 
         {/* Team Members Sections */}
         <div className="max-w-4xl mx-auto space-y-16 mb-20">
-          {teamData.members.map((member) => (
+          {teamMembers.members.map((member) => (
             <section key={member.id} className="text-center">
               <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider">
                 About {member.name}

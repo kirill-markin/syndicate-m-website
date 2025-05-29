@@ -1,8 +1,7 @@
-import { getPeople } from "@/lib/data-loader";
+import { peopleData } from "@/data/people";
 import PeopleClient from "./people-client";
 
 const PeoplePage = () => {
-  const peopleData = getPeople();
   // const siteConfig = getSiteConfig();
   // const teamData = getTeamMembers();
 

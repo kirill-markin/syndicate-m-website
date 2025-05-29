@@ -1,4 +1,5 @@
-import { TeamMembersData, SiteConfig } from "@/lib/data-loader";
+import { TeamMembersData } from "@/data/team-members";
+import { SiteConfig } from "@/data/site-config";
 
 interface FooterProps {
   teamData: TeamMembersData;
