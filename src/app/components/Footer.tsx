@@ -22,7 +22,7 @@ export default function Footer({ teamData, siteConfig }: FooterProps) {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline capitalize text-gray-700"
+                    className="hover:underline capitalize text-muted-foreground hover:text-foreground transition-colors"
                   >
                     {link.platform}
                   </a>
@@ -34,9 +34,11 @@ export default function Footer({ teamData, siteConfig }: FooterProps) {
       </div>
 
       {/* Bottom Footer */}
-      <div className="flex justify-between items-center mt-12 pt-8 border-t border-gray-200 text-sm max-w-6xl mx-auto">
-        <div className="text-gray-600">{siteConfig.site.footer.copyright}</div>
-        <div className="font-bold text-lg italic text-black">
+      <div className="flex justify-between items-center mt-12 pt-8 border-t border-border text-sm max-w-6xl mx-auto">
+        <div className="text-muted-foreground">
+          {siteConfig.site.footer.copyright}
+        </div>
+        <div className="font-bold text-lg italic">
           {siteConfig.site.footer.update_text}
         </div>
       </div>

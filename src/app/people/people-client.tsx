@@ -2,8 +2,9 @@
 
 import { useState, useMemo } from "react";
 import { PeopleData } from "@/data/people";
-// import Header from "../components/Header";
-// import Footer from "../components/Footer";
+import { Card, CardContent } from "@/app/components/ui/card";
+import { Badge } from "@/app/components/ui/badge";
+import { Search } from "lucide-react";
 
 interface PeopleClientProps {
   peopleData: PeopleData;
@@ -38,13 +39,13 @@ const PeopleClient = ({ peopleData }: PeopleClientProps) => {
 
         {/* Hero section */}
         <div className="text-center py-16 px-6">
-          <h1 className="text-5xl md:text-6xl font-normal mb-4 italic text-gray-600">
+          <h1 className="text-5xl md:text-6xl font-normal mb-4 italic text-muted-foreground">
             The people
           </h1>
           <h2 className="text-6xl md:text-7xl font-bold mb-8 tracking-tight">
             WE ADORE
           </h2>
-          <p className="text-gray-600 text-lg max-w-md mx-auto mb-12">
+          <p className="text-muted-foreground text-lg max-w-md mx-auto mb-12">
             {peopleData.page_config.subtitle}
           </p>
 
@@ -52,52 +53,42 @@ const PeopleClient = ({ peopleData }: PeopleClientProps) => {
           {peopleData.page_config.search_enabled && (
             <div className="max-w-md mx-auto relative">
               <div className="relative">
-                <svg
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
                   type="text"
                   placeholder={peopleData.page_config.search_placeholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full py-4 pl-12 pr-6 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-gray-600"
+                  className="w-full py-2 pl-12 pr-6 rounded-full border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent text-foreground placeholder:text-muted-foreground"
                 />
               </div>
             </div>
           )}
         </div>
-
-        {/* Orange accent dot */}
-        <div className="absolute top-1/2 right-12 w-3 h-3 bg-orange-500 rounded-full"></div>
       </div>
 
       {/* People grid */}
       <div className="px-6 pb-12">
-        <div className="max-w-4xl mx-auto space-y-12">
+        <div className="max-w-4xl mx-auto space-y-8">
           {filteredPeople.map((person) => (
-            <div key={person.id} className="relative">
-              <div className="text-left">
-                <h3 className="text-4xl md:text-5xl font-normal mb-2 text-black">
-                  {person.name}
-                </h3>
-                <p className="text-gray-600 text-lg mb-4 max-w-lg">
-                  {person.title}, {person.description}
-                </p>
-                <div className="inline-block px-4 py-2 border border-gray-300 rounded-full text-sm text-gray-600">
-                  ~${person.hourly_rate}+ per hour
+            <Card
+              key={person.id}
+              className="border-none shadow-none bg-transparent"
+            >
+              <CardContent className="p-6">
+                <div className="text-left">
+                  <h3 className="text-4xl md:text-5xl font-normal mb-2">
+                    {person.name}
+                  </h3>
+                  <p className="text-muted-foreground text-lg mb-4 max-w-lg">
+                    {person.title}, {person.description}
+                  </p>
+                  <Badge variant="outline" className="rounded-full">
+                    ~${person.hourly_rate}+ per hour
+                  </Badge>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>
