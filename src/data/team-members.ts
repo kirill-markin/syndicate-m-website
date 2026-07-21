@@ -50,7 +50,7 @@ export const teamMembers: TeamMembersData = {
       social_links: [
         {
           platform: "website",
-          url: "https://www.katerina-markina.com/"
+          url: "https://www.markinakv.com/"
         },
         {
           platform: "linkedin",
@@ -58,11 +58,11 @@ export const teamMembers: TeamMembersData = {
         },
         {
           platform: "telegram",
-          url: "https://t.me//markinakv"
+          url: "https://t.me/markinakv"
         },
         {
           platform: "email",
-          url: "mailto:markinakv@gmail.com"
+          url: "mailto:km@markinakv.com"
         }
       ],
       photo: "/images/team/kate.jpg"
@@ -94,11 +94,11 @@ export const teamMembers: TeamMembersData = {
       social_links: [
         {
           platform: "website",
-          url: "https://alexander-markin.com/"
+          url: "https://alex-markin.com/"
         },
         {
           platform: "linkedin",
-          url: "https://www.linkedin.com/in/alexander-markin-1b1b1b234"
+          url: "https://www.linkedin.com/in/alex-markin-1b1b1b234/"
         },
         {
           platform: "instagram",

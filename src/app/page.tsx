@@ -1,23 +1,42 @@
-import { Route } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/data/site-config";
 import { teamMembers } from "@/data/team-members";
-import { Button } from "@/app/components/ui/button";
-import { Card, CardContent } from "@/app/components/ui/card";
+import { cn } from "@/lib/utils";
+
+const polaroidRotations = ["-rotate-3", "rotate-2", "-rotate-1", "rotate-3"];
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Polaroid Photos */}
-      <div className="flex justify-center mb-12">
-        <Image
-          src="/polaroid-strip.png"
-          alt="Team polaroid photos"
-          width={1000}
-          height={400}
-          className="object-contain"
-        />
+      <div className="flex flex-wrap items-center justify-center gap-y-10 px-6 pt-10 mb-12">
+        {teamMembers.members.map((member, index) => {
+          const websiteUrl = member.social_links.find(
+            (link) => link.platform === "website"
+          )?.url;
+          return (
+            <a
+              key={member.id}
+              href={websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${member.name}'s website`}
+              className={cn(
+                "relative block bg-[#f6f3ea] p-3 pb-14 shadow-lg transition-transform duration-300 hover:z-10 hover:rotate-0 hover:scale-105",
+                polaroidRotations[index % polaroidRotations.length],
+                index > 0 && "md:-ml-6"
+              )}
+            >
+              <Image
+                src={member.photo}
+                alt={`Polaroid photo of ${member.name}`}
+                width={400}
+                height={400}
+                className="aspect-square w-36 object-cover md:w-52"
+              />
+            </a>
+          );
+        })}
       </div>
 
       {/* Hero Section */}
@@ -49,31 +68,6 @@ export default function Home() {
             </section>
           ))}
         </div>
-
-        {/* People Section */}
-        <Card className="bg-primary text-primary-foreground rounded-lg mb-12 max-w-6xl mx-auto">
-          <CardContent className="p-8">
-            <div className="max-w-3xl">
-              <p className="text-sm mb-6 text-primary-foreground/70">
-                {siteConfig.site.homepage.people_section.subtitle}
-              </p>
-              <div className="flex justify-between items-end">
-                <h2 className="text-4xl font-bold">
-                  {siteConfig.site.homepage.people_section.title}
-                </h2>
-                <Button asChild variant="secondary" className="rounded-full">
-                  <Link
-                    href={
-                      siteConfig.site.homepage.people_section.cta_link as Route
-                    }
-                  >
-                    {siteConfig.site.homepage.people_section.cta_text}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
       </main>
     </div>
   );
