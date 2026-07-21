@@ -39,7 +39,7 @@ export const siteConfig: SiteConfig = {
     ],
     
     footer: {
-      copyright: "2025",
+      copyright: "2026",
       update_text: "STAY UPDATED"
     },
     

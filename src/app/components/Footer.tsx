@@ -1,9 +1,28 @@
 import { TeamMembersData } from "@/data/team-members";
 import { SiteConfig } from "@/data/site-config";
+import CopyAsMarkdown from "./CopyAsMarkdown";
 
 interface FooterProps {
   teamData: TeamMembersData;
   siteConfig: SiteConfig;
+}
+
+function buildMarkdown(teamData: TeamMembersData, siteConfig: SiteConfig) {
+  const lines = [
+    `# ${siteConfig.site.name}`,
+    "",
+    siteConfig.site.tagline,
+    siteConfig.site.description,
+    "",
+  ];
+  for (const member of teamData.members) {
+    lines.push(`## ${member.name}`, "", member.bio, "");
+    for (const link of member.social_links) {
+      lines.push(`- ${link.platform}: ${link.url}`);
+    }
+    lines.push("");
+  }
+  return lines.join("\n");
 }
 
 export default function Footer({ teamData, siteConfig }: FooterProps) {
@@ -35,8 +54,9 @@ export default function Footer({ teamData, siteConfig }: FooterProps) {
 
       {/* Bottom Footer */}
       <div className="flex justify-between items-center mt-12 pt-8 border-t border-border text-sm max-w-6xl mx-auto">
-        <div className="text-muted-foreground">
-          {siteConfig.site.footer.copyright}
+        <div className="flex items-center gap-4 text-muted-foreground">
+          <span>{siteConfig.site.footer.copyright}</span>
+          <CopyAsMarkdown markdown={buildMarkdown(teamData, siteConfig)} />
         </div>
         <div className="font-bold text-lg italic">
           {siteConfig.site.footer.update_text}

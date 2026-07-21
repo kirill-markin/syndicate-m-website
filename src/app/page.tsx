@@ -65,7 +65,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto space-y-16 mb-20">
           {teamMembers.members.map((member) => (
             <section key={member.id} className="text-center">
-              <h2 className="text-2xl font-bold mb-8 uppercase tracking-wider">
+              <h2 className="text-2xl font-bold mb-6 uppercase tracking-wider">
                 About {member.name}
               </h2>
               <p className="text-muted-foreground leading-relaxed max-w-2xl mx-auto text-base">
