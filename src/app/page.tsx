@@ -1,42 +1,48 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import { siteConfig } from "@/data/site-config";
 import { teamMembers } from "@/data/team-members";
-import { cn } from "@/lib/utils";
 
-const polaroidRotations = ["-rotate-3", "rotate-2", "-rotate-1", "rotate-3"];
+// Click zones over each polaroid in the strip, as percentages of the image
+const polaroidZones: Record<string, CSSProperties> = {
+  kirill: { left: "5%", top: "10%", width: "22.3%", height: "77%" },
+  kate: { left: "27.7%", top: "1%", width: "22.1%", height: "75%" },
+  andrey: { left: "49.8%", top: "12.9%", width: "21.2%", height: "76.3%" },
+  alex: { left: "71%", top: "3.8%", width: "23.3%", height: "84.5%" },
+};
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Polaroid Photos */}
-      <div className="flex flex-wrap items-center justify-center gap-y-10 px-6 pt-10 mb-12">
-        {teamMembers.members.map((member, index) => {
-          const websiteUrl = member.social_links.find(
-            (link) => link.platform === "website"
-          )?.url;
-          return (
-            <a
-              key={member.id}
-              href={websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit ${member.name}'s website`}
-              className={cn(
-                "relative block bg-[#f6f3ea] p-3 pb-14 shadow-lg transition-transform duration-300 hover:z-10 hover:rotate-0 hover:scale-105",
-                polaroidRotations[index % polaroidRotations.length],
-                index > 0 && "md:-ml-6"
-              )}
-            >
-              <Image
-                src={member.photo}
-                alt={`Polaroid photo of ${member.name}`}
-                width={400}
-                height={400}
-                className="aspect-square w-36 object-cover md:w-52"
+      <div className="flex justify-center mb-12">
+        <div className="relative">
+          <Image
+            src="/polaroid-strip.png"
+            alt="Team polaroid photos"
+            width={1000}
+            height={400}
+            className="object-contain"
+          />
+          {teamMembers.members.map((member) => {
+            const websiteUrl = member.social_links.find(
+              (link) => link.platform === "website"
+            )?.url;
+            const zone = polaroidZones[member.id];
+            if (!websiteUrl || !zone) return null;
+            return (
+              <a
+                key={member.id}
+                href={websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit ${member.name}'s website`}
+                className="absolute focus-visible:outline-2 focus-visible:outline-ring"
+                style={zone}
               />
-            </a>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
 
       {/* Hero Section */}

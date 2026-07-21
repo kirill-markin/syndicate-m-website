@@ -90,7 +90,7 @@ export const teamMembers: TeamMembersData = {
     {
       id: "alex",
       name: "Alex",
-      bio: "Artist, student, and specialty barista, based between Copenhagen and Berlin. Photography and documentary film — a film on the first gulag, video editing for Radio Echo — a New York Times Summer Reading Contest win, and Louppe, a fast, keyboard-driven Mac app for culling photos.",
+      bio: "Artist, student, and specialty barista, based in Copenhagen.",
       social_links: [
         {
           platform: "website",
