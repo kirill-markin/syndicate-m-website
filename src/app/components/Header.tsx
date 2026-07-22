@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/app/components/ui/button";
 
 const Header = () => {
   return (
@@ -6,6 +7,9 @@ const Header = () => {
       <Link href="/" className="text-lg font-medium">
         syndicate_m
       </Link>
+      <Button variant="ghost" asChild>
+        <Link href="/people">People</Link>
+      </Button>
     </header>
   );
 };

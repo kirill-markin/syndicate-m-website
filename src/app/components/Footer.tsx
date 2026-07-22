@@ -16,8 +16,11 @@ function buildMarkdown(teamData: TeamMembersData, siteConfig: SiteConfig) {
     "",
   ];
   for (const member of teamData.members) {
-    lines.push(`## ${member.name}`, "", member.bio, "");
-    for (const link of member.social_links) {
+    lines.push(`## ${member.name}`, "");
+    if (member.bio) {
+      lines.push(member.bio, "");
+    }
+    for (const link of member.social_links ?? []) {
       lines.push(`- ${link.platform}: ${link.url}`);
     }
     lines.push("");

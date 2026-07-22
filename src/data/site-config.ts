@@ -17,6 +17,12 @@ export interface SiteConfig {
         subtitle: string;
         description: string;
       };
+      people_section: {
+        title: string;
+        subtitle: string;
+        cta_text: string;
+        cta_link: string;
+      };
     };
     social_platforms: Record<string, {
       name: string;
@@ -35,6 +41,10 @@ export const siteConfig: SiteConfig = {
       {
         label: "Home",
         href: "/"
+      },
+      {
+        label: "People",
+        href: "/people"
       }
     ],
     
@@ -48,6 +58,13 @@ export const siteConfig: SiteConfig = {
         title: "SYNDICATE_M",
         subtitle: "This is our family site.",
         description: "We have no idea what it's for."
+      },
+
+      people_section: {
+        title: "people",
+        subtitle: "here are people from clients we have ever worked with who advise you to work with them too",
+        cta_text: "All cool people",
+        cta_link: "/people"
       }
     },
     
