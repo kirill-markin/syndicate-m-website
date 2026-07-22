@@ -62,7 +62,7 @@ export const siteConfig: SiteConfig = {
 
       people_section: {
         title: "people",
-        subtitle: "here are people from clients we have ever worked with who advise you to work with them too",
+        subtitle: "people we've worked with. we vouch for all of them.",
         cta_text: "All cool people",
         cta_link: "/people"
       }
