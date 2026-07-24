@@ -18,7 +18,7 @@ export const teamMembers: TeamMembersData = {
     {
       id: "kirill",
       name: "Kirill",
-      bio: "Over 12 years of experience in data engineering and leadership roles, with a strong background in founding startups, B2B, and SaaS: HR tech, business automation and data extraction software. Accelerated query performance by 5x on the system with over 3 billion rows of data daily and boosted proxy speed for data collection company from 15th to the Top 4 globally.",
+      bio: "AI Strategy Advisor and Digital Transformation Expert. Staff Software Engineer and founder with 12+ years in engineering, writing and speaking on AI and data — a Cursor IDE workflow guide with 108,000+ views, conference talks on AI web scraping, a merged PR to an OpenAI repository — and running AI tech mentorship.",
       social_links: [
         {
           platform: "website",
@@ -46,11 +46,11 @@ export const teamMembers: TeamMembersData = {
     {
       id: "kate",
       name: "Katerina",
-      bio: "B2B SaaS, leading operations and strategic projects that help teams collaborate effectively and grow.",
+      bio: "Operations manager with experience across B2B SaaS, adtech, theatre, education, and charity — building work so that meaning, a predictable system, and continuous growth stand behind the team and the product. Certified neurointegration trainer, currently training as an ICF-standard coach, with charitable projects helping children.",
       social_links: [
         {
           platform: "website",
-          url: "https://www.katerina-markina.com/"
+          url: "https://www.markinakv.com/"
         },
         {
           platform: "linkedin",
@@ -58,11 +58,11 @@ export const teamMembers: TeamMembersData = {
         },
         {
           platform: "telegram",
-          url: "https://t.me//markinakv"
+          url: "https://t.me/markinakv"
         },
         {
           platform: "email",
-          url: "mailto:markinakv@gmail.com"
+          url: "mailto:km@markinakv.com"
         }
       ],
       photo: "/images/team/kate.jpg"
@@ -70,7 +70,7 @@ export const teamMembers: TeamMembersData = {
     {
       id: "andrey",
       name: "Andrey",
-      bio: "Full-Stack AI Software Engineer and Consultant, helping businesses integrate AI and web technologies, specializing in custom AI solutions, pipelines, and automation.",
+      bio: "Full-stack AI development at Mark Life Ltd: AI products and apps shipped end to end — agents, RAG, chat and voice, SaaS and marketplaces, bots and data pipelines — taking a business idea to proof of concept in 3 days and MVP in 2 weeks. Also runs AI coding transformation for engineering teams and IT mentorship.",
       social_links: [
         {
           platform: "website",
@@ -90,15 +90,15 @@ export const teamMembers: TeamMembersData = {
     {
       id: "alex",
       name: "Alex",
-      bio: "IB high school student at Nyborg Gymnasium, Denmark. Future Liberal Arts entrant (Poli sci + literature studies); interested in populism, authoritarianism, and Arctic policy.",
+      bio: "Artist, student, and specialty barista, based in Copenhagen.",
       social_links: [
         {
           platform: "website",
-          url: "https://alexander-markin.com/"
+          url: "https://alex-markin.com/"
         },
         {
           platform: "linkedin",
-          url: "https://www.linkedin.com/in/alexander-markin-1b1b1b234"
+          url: "https://www.linkedin.com/in/alex-markin-1b1b1b234/"
         },
         {
           platform: "instagram",

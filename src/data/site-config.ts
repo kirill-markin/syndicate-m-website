@@ -49,7 +49,7 @@ export const siteConfig: SiteConfig = {
     ],
     
     footer: {
-      copyright: "2025",
+      copyright: "2026",
       update_text: "STAY UPDATED"
     },
     
@@ -59,10 +59,10 @@ export const siteConfig: SiteConfig = {
         subtitle: "This is our family site.",
         description: "We have no idea what it's for."
       },
-      
+
       people_section: {
         title: "people",
-        subtitle: "there will be people here from clients we have ever worked with who advise you to work with them too",
+        subtitle: "people we've worked with. we vouch for all of them.",
         cta_text: "All cool people",
         cta_link: "/people"
       }
