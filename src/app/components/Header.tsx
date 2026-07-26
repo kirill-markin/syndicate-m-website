@@ -1,15 +1,20 @@
 import Link from "next/link";
-import { Button } from "@/app/components/ui/button";
 
 const Header = () => {
   return (
-    <header className="flex justify-between items-center p-6">
-      <Link href="/" className="text-lg font-medium">
+    <header className="font-system flex items-center justify-between p-6">
+      <Link
+        href="/"
+        className="text-sm font-medium transition-colors hover:text-link-accent"
+      >
         syndicate_m
       </Link>
-      <Button variant="ghost" asChild>
-        <Link href="/people">People</Link>
-      </Button>
+      <Link
+        href="/people"
+        className="text-sm font-medium transition-colors hover:text-link-accent"
+      >
+        people
+      </Link>
     </header>
   );
 };

@@ -17,6 +17,9 @@ function buildMarkdown(teamData: TeamMembersData, siteConfig: SiteConfig) {
   ];
   for (const member of teamData.members) {
     lines.push(`## ${member.name}`, "");
+    if (member.location) {
+      lines.push(member.location, "");
+    }
     if (member.bio) {
       lines.push(member.bio, "");
     }
@@ -30,38 +33,16 @@ function buildMarkdown(teamData: TeamMembersData, siteConfig: SiteConfig) {
 
 export default function Footer({ teamData, siteConfig }: FooterProps) {
   return (
-    <footer className="px-6 pb-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm max-w-6xl mx-auto">
-        {teamData.members.map((member) => (
-          <div key={member.id}>
-            <div className="font-bold uppercase mb-3 tracking-wider">
-              {member.name}
-            </div>
-            <div className="space-y-1">
-              {member.social_links.map((link, index) => (
-                <div key={index}>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline capitalize text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.platform}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
+    <footer className="font-system px-6 pb-8">
       {/* Bottom Footer */}
-      <div className="flex justify-between items-center mt-12 pt-8 border-t border-border text-sm max-w-6xl mx-auto">
-        <div className="flex items-center gap-4 text-muted-foreground">
-          <span>{siteConfig.site.footer.copyright}</span>
+      <div className="mx-auto grid max-w-6xl grid-cols-2 items-center gap-x-0 gap-y-3 border-t border-border pt-8 text-sm text-muted-foreground min-[420px]:grid-cols-[1fr_auto_1fr] min-[500px]:gap-x-4">
+        <div className="col-span-2 col-start-1 row-start-1 justify-self-center min-[420px]:col-span-1 min-[420px]:col-start-2">
           <CopyAsMarkdown markdown={buildMarkdown(teamData, siteConfig)} />
         </div>
-        <div className="font-bold text-lg italic">
+        <span className="col-start-1 row-start-2 justify-self-start min-[420px]:row-start-1">
+          {siteConfig.site.footer.copyright}
+        </span>
+        <div className="col-start-2 row-start-2 justify-self-end min-[420px]:col-start-3 min-[420px]:row-start-1">
           {siteConfig.site.footer.update_text}
         </div>
       </div>

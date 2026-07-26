@@ -39,13 +39,16 @@ const PeopleClient = ({ peopleData }: PeopleClientProps) => {
 
         {/* Hero section */}
         <div className="text-center py-16 px-6">
-          <h1 className="text-5xl md:text-6xl font-normal mb-4 italic text-muted-foreground">
-            The people
+          <h1 className="mb-8 tracking-tight">
+            <span className="mb-4 block text-5xl font-normal italic text-muted-foreground md:text-6xl">
+              The people
+            </span>
+            {" "}
+            <span className="block text-6xl font-bold md:text-7xl">
+              WE ADORE
+            </span>
           </h1>
-          <h2 className="text-6xl md:text-7xl font-bold mb-8 tracking-tight">
-            WE ADORE
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-md mx-auto mb-12">
+          <p className="text-lg max-w-md mx-auto mb-12">
             {peopleData.page_config.subtitle}
           </p>
 
@@ -55,11 +58,12 @@ const PeopleClient = ({ peopleData }: PeopleClientProps) => {
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
-                  type="text"
+                  type="search"
+                  aria-label="Search people by name or title"
                   placeholder={peopleData.page_config.search_placeholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full py-2 pl-12 pr-6 rounded-full border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent text-foreground placeholder:text-muted-foreground"
+                  className="font-system w-full py-2 pl-12 pr-6 rounded-full border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent text-foreground placeholder:text-muted-foreground"
                 />
               </div>
             </div>
@@ -77,10 +81,10 @@ const PeopleClient = ({ peopleData }: PeopleClientProps) => {
             >
               <CardContent className="p-6">
                 <div className="text-left">
-                  <h3 className="text-4xl md:text-5xl font-normal mb-2">
+                  <h2 className="text-4xl md:text-5xl font-normal mb-2">
                     {person.name}
-                  </h3>
-                  <p className="text-muted-foreground text-lg mb-4 max-w-lg">
+                  </h2>
+                  <p className="text-lg mb-4 max-w-lg">
                     {person.title}, {person.description}
                   </p>
                   <Badge variant="outline" className="rounded-full">

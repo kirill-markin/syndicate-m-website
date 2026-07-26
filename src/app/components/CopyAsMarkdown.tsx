@@ -52,7 +52,7 @@ const CopyAsMarkdown = ({ markdown }: { markdown: string }) => {
       type="button"
       onClick={copy}
       aria-live="polite"
-      className="hover:text-foreground hover:underline transition-colors cursor-pointer"
+      className="font-system cursor-pointer underline decoration-current underline-offset-4 transition-colors hover:text-link-accent"
     >
       {label}
     </button>

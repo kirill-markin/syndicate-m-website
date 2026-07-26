@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { teamMembers } from "@/data/team-members";
 import { siteConfig } from "@/data/site-config";
+import { siteUrl } from "@/lib/site-url";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +17,46 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const description =
+  "Meet Kirill, Katerina, Andrey, and Alex Markin—a family working across AI engineering, operations, coaching, and visual arts in Europe.";
+
 export const metadata: Metadata = {
-  title: "SYNDICATE_M",
-  description: "This is our family site. We have no idea what it's for.",
+  metadataBase: siteUrl,
+  title: {
+    default: "SYNDICATE_M — The Markin family",
+    template: "%s | SYNDICATE_M",
+  },
+  description,
+  applicationName: "SYNDICATE_M",
+  authors: [{ name: "The Markin family" }],
+  creator: "The Markin family",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: "SYNDICATE_M",
+    title: "SYNDICATE_M — The Markin family",
+    description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SYNDICATE_M — The Markin family",
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({

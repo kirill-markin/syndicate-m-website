@@ -34,8 +34,8 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   site: {
     name: "SYNDICATE_M",
-    tagline: "This is our family site.",
-    description: "We have no idea what it's for.",
+    tagline: "This is our family site",
+    description: "We have no idea what it's for",
     
     navigation: [
       {
@@ -43,27 +43,27 @@ export const siteConfig: SiteConfig = {
         href: "/"
       },
       {
-        label: "People",
+        label: "people",
         href: "/people"
       }
     ],
     
     footer: {
       copyright: "2026",
-      update_text: "STAY UPDATED"
+      update_text: "stay updated"
     },
     
     homepage: {
       hero: {
         title: "SYNDICATE_M",
-        subtitle: "This is our family site.",
-        description: "We have no idea what it's for."
+        subtitle: "This is our family site",
+        description: "We have no idea what it's for"
       },
 
       people_section: {
-        title: "people",
-        subtitle: "people we've worked with. we vouch for all of them.",
-        cta_text: "All cool people",
+        title: "PEOPLE",
+        subtitle: "People we've worked with. We vouch for all of them.",
+        cta_text: "all cool people",
         cta_link: "/people"
       }
     },
@@ -77,10 +77,10 @@ export const siteConfig: SiteConfig = {
         name: "Instagram",
         icon: "instagram"
       },
-      website: {
-        name: "Website",
+      site: {
+        name: "Site",
         icon: "website"
       }
     }
   }
-}; 
+};

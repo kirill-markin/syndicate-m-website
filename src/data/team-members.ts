@@ -1,6 +1,8 @@
 export interface TeamMember {
   id: string;
   name: string;
+  fullName: string;
+  location: string;
   bio: string;
   social_links: Array<{
     platform: string;
@@ -18,10 +20,12 @@ export const teamMembers: TeamMembersData = {
     {
       id: "kirill",
       name: "Kirill",
-      bio: "AI Strategy Advisor and Digital Transformation Expert. Staff Software Engineer and founder with 12+ years in engineering, writing and speaking on AI and data — a Cursor IDE workflow guide with 108,000+ views, conference talks on AI web scraping, a merged PR to an OpenAI repository — and running AI tech mentorship.",
+      fullName: "Kirill Markin",
+      location: "Barcelona, Spain",
+      bio: "Staff Software Engineer with 12+ years of technical leadership across AI products and data platforms. Built an LLM platform that accelerated enterprise integrations 7× and helped move SOAX from 15th to 3rd in an industry benchmark.",
       social_links: [
         {
-          platform: "website",
+          platform: "site",
           url: "https://kirill-markin.com/"
         },
         {
@@ -29,7 +33,7 @@ export const teamMembers: TeamMembersData = {
           url: "https://www.linkedin.com/in/kirill-markin/"
         },
         {
-          platform: "instagram",
+          platform: "insta",
           url: "https://www.instagram.com/kirill.markin.kira/"
         },
         {
@@ -37,7 +41,7 @@ export const teamMembers: TeamMembersData = {
           url: "https://github.com/kirill-markin"
         },
         {
-          platform: "X",
+          platform: "x",
           url: "https://x.com/kirill_markin_"
         }
       ],
@@ -46,11 +50,17 @@ export const teamMembers: TeamMembersData = {
     {
       id: "kate",
       name: "Katerina",
-      bio: "Operations manager with experience across B2B SaaS, adtech, theatre, education, and charity — building work so that meaning, a predictable system, and continuous growth stand behind the team and the product. Certified neurointegration trainer, currently training as an ICF-standard coach, with charitable projects helping children.",
+      fullName: "Katerina Markina",
+      location: "Plovdiv, Bulgaria",
+      bio: "Operations manager with experience across B2B SaaS, adtech, theatre, education, and charity. Builds meaningful, predictable systems for team and product growth; certified neurointegration trainer and ICF-standard coach in training.",
       social_links: [
         {
-          platform: "website",
+          platform: "site",
           url: "https://www.markinakv.com/"
+        },
+        {
+          platform: "insta",
+          url: "https://www.instagram.com/markinakv"
         },
         {
           platform: "linkedin",
@@ -70,18 +80,24 @@ export const teamMembers: TeamMembersData = {
     {
       id: "andrey",
       name: "Andrey",
-      bio: "Full-stack AI development at Mark Life Ltd: AI products and apps shipped end to end — agents, RAG, chat and voice, SaaS and marketplaces, bots and data pipelines — taking a business idea to proof of concept in 3 days and MVP in 2 weeks. Also runs AI coding transformation for engineering teams and IT mentorship.",
+      fullName: "Andrey Markin",
+      location: "Barcelona, Spain",
+      bio: "Full-Stack AI Software Engineer specializing in AI-powered web applications. With 6+ years of experience and 40+ deployed apps, he helps businesses move from idea to production using modern TypeScript and AI tooling.",
       social_links: [
         {
-          platform: "website",
+          platform: "site",
           url: "https://andrey-markin.com/"
+        },
+        {
+          platform: "github",
+          url: "https://github.com/Mark-Life"
         },
         {
           platform: "linkedin",
           url: "https://www.linkedin.com/in/mark-life"
         },
         {
-          platform: "X",
+          platform: "x",
           url: "https://x.com/mark_life_108"
         }
       ],
@@ -90,10 +106,12 @@ export const teamMembers: TeamMembersData = {
     {
       id: "alex",
       name: "Alex",
-      bio: "Artist, student, and specialty barista, based in Copenhagen.",
+      fullName: "Alex Markin",
+      location: "Copenhagen, Denmark",
+      bio: "High school student in the IB Diploma Programme. Artist focused on photography, painting, and video. Specialty coffee barista at Darcy's Kaffee in Copenhagen.",
       social_links: [
         {
-          platform: "website",
+          platform: "site",
           url: "https://alex-markin.com/"
         },
         {
@@ -101,8 +119,16 @@ export const teamMembers: TeamMembersData = {
           url: "https://www.linkedin.com/in/alex-markin-1b1b1b234/"
         },
         {
-          platform: "instagram",
+          platform: "insta",
           url: "https://www.instagram.com/murlexander/"
+        },
+        {
+          platform: "github",
+          url: "https://github.com/alexander-markin-meow"
+        },
+        {
+          platform: "flickr",
+          url: "https://www.flickr.com/photos/194911743@N06/"
         }
       ],
       photo: "/images/team/alex.jpg"
@@ -113,4 +139,4 @@ export const teamMembers: TeamMembersData = {
 // Helper functions
 export const getTeamMemberById = (id: string): TeamMember | undefined => {
   return teamMembers.members.find(member => member.id === id);
-}; 
+};
