@@ -124,7 +124,7 @@ export const teamMembers: TeamMembersData = {
         },
         {
           platform: "github",
-          url: "https://github.com/alexander-markin-meow"
+          url: "https://github.com/murlexander"
         },
         {
           platform: "flickr",
